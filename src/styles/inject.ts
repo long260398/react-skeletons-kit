@@ -1,0 +1,72 @@
+let injected = false
+
+const css = `
+.skeleton {
+  display: block;
+  background: linear-gradient(90deg, #ebebeb 25%, #f5f5f5 50%, #ebebeb 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite linear;
+}
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.skeleton-card {
+  width: 240px;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.skeleton-card-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.skeleton-table-row {
+  display: grid;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+  align-items: center;
+}
+.skeleton-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.skeleton-list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.skeleton-list-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.skeleton-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+@media (prefers-color-scheme: dark) {
+  .skeleton {
+    background: linear-gradient(90deg, #2d2d2d 25%, #3a3a3a 50%, #2d2d2d 75%);
+    background-size: 200% 100%;
+  }
+  .skeleton-card { border-color: #333; }
+  .skeleton-table-row { border-bottom-color: #2d2d2d; }
+}
+`
+
+export function injectStyles() {
+  if (injected || typeof document === 'undefined') return
+  injected = true
+  const style = document.createElement('style')
+  style.setAttribute('data-react-skeletons-kit', '')
+  style.textContent = css
+  document.head.appendChild(style)
+}

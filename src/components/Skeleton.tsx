@@ -1,4 +1,6 @@
-import '../styles/skeleton.css'
+import { injectStyles } from '../styles/inject'
+
+injectStyles()
 
 export interface SkeletonProps {
   width?: string | number

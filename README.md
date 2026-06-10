@@ -30,7 +30,7 @@
 ### Installation
 
 ```bash
-git clone https://github.com/long260398/react-loading-skeleton
+git clone https://github.com/long260398/react-skeletons-kit
 cd react-loading-skeleton
 npm install
 npm run dev
